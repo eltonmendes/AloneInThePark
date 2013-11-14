@@ -101,7 +101,6 @@ BOOL isGrounded;
     /* Called before each frame is rendered */
     
     //Ground Position:
-
     
     if(joystick.velocity.x > 0){
         CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
@@ -109,6 +108,7 @@ BOOL isGrounded;
     }
     else if (joystick.velocity.x < 0){
         CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
+        if(location.x >12)
         self.playerNode.position = location;
     }
 }
