@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC2F69FA1834E9030032C836 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69F91834E9030032C836 /* Foundation.framework */; };
+		EC2F69FC1834E9030032C836 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69FB1834E9030032C836 /* CoreGraphics.framework */; };
+		EC2F69FE1834E9030032C836 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69FD1834E9030032C836 /* UIKit.framework */; };
+		EC2F6A001834E9030032C836 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69FF1834E9030032C836 /* SpriteKit.framework */; };
+		EC2F6A061834E9030032C836 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A041834E9030032C836 /* InfoPlist.strings */; };
+		EC2F6A081834E9030032C836 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A071834E9030032C836 /* main.m */; };
+		EC2F6A0C1834E9030032C836 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A0B1834E9030032C836 /* AppDelegate.m */; };
+		EC2F6A0F1834E9030032C836 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A0D1834E9030032C836 /* Main.storyboard */; };
+		EC2F6A121834E9030032C836 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A111834E9030032C836 /* ViewController.m */; };
+		EC2F6A151834E9030032C836 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A141834E9030032C836 /* MyScene.m */; };
+		EC2F6A171834E9030032C836 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A161834E9030032C836 /* Spaceship.png */; };
+		EC2F6A191834E9030032C836 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A181834E9030032C836 /* Images.xcassets */; };
+		EC2F6A201834E9030032C836 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F6A1F1834E9030032C836 /* XCTest.framework */; };
+		EC2F6A211834E9030032C836 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69F91834E9030032C836 /* Foundation.framework */; };
+		EC2F6A221834E9030032C836 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69FD1834E9030032C836 /* UIKit.framework */; };
+		EC2F6A2A1834E9030032C836 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A281834E9030032C836 /* InfoPlist.strings */; };
+		EC2F6A2C1834E9030032C836 /* AloneInTheParkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A2B1834E9030032C836 /* AloneInTheParkTests.m */; };
+		EC2F6A381834EAF20032C836 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A371834EAF20032C836 /* player.png */; };
+		EC2F6A42183535290032C836 /* Joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A41183535290032C836 /* Joystick.m */; };
+		EC2F6A451835355B0032C836 /* dpad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A431835355B0032C836 /* dpad.png */; };
+		EC2F6A461835355B0032C836 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A441835355B0032C836 /* joystick.png */; };
+		EC2F6A48183539210032C836 /* jumpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A47183539210032C836 /* jumpButton.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC2F6A231834E9030032C836 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC2F69EE1834E9030032C836 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC2F69F51834E9030032C836;
+			remoteInfo = AloneInThePark;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC2F69F61834E9030032C836 /* AloneInThePark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AloneInThePark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2F69F91834E9030032C836 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EC2F69FB1834E9030032C836 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EC2F69FD1834E9030032C836 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EC2F69FF1834E9030032C836 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		EC2F6A031834E9030032C836 /* AloneInThePark-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AloneInThePark-Info.plist"; sourceTree = "<group>"; };
+		EC2F6A051834E9030032C836 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC2F6A071834E9030032C836 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EC2F6A091834E9030032C836 /* AloneInThePark-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AloneInThePark-Prefix.pch"; sourceTree = "<group>"; };
+		EC2F6A0A1834E9030032C836 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC2F6A0B1834E9030032C836 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC2F6A0E1834E9030032C836 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC2F6A101834E9030032C836 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EC2F6A111834E9030032C836 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EC2F6A131834E9030032C836 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		EC2F6A141834E9030032C836 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		EC2F6A161834E9030032C836 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		EC2F6A181834E9030032C836 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC2F6A1E1834E9030032C836 /* AloneInTheParkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AloneInTheParkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2F6A1F1834E9030032C836 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		EC2F6A271834E9030032C836 /* AloneInTheParkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AloneInTheParkTests-Info.plist"; sourceTree = "<group>"; };
+		EC2F6A291834E9030032C836 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC2F6A2B1834E9030032C836 /* AloneInTheParkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AloneInTheParkTests.m; sourceTree = "<group>"; };
+		EC2F6A371834EAF20032C836 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		EC2F6A40183535290032C836 /* Joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joystick.h; sourceTree = "<group>"; };
+		EC2F6A41183535290032C836 /* Joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Joystick.m; sourceTree = "<group>"; };
+		EC2F6A431835355B0032C836 /* dpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dpad.png; sourceTree = "<group>"; };
+		EC2F6A441835355B0032C836 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
+		EC2F6A47183539210032C836 /* jumpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpButton.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC2F69F31834E9030032C836 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2F69FC1834E9030032C836 /* CoreGraphics.framework in Frameworks */,
+				EC2F69FE1834E9030032C836 /* UIKit.framework in Frameworks */,
+				EC2F6A001834E9030032C836 /* SpriteKit.framework in Frameworks */,
+				EC2F69FA1834E9030032C836 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2F6A1B1834E9030032C836 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2F6A201834E9030032C836 /* XCTest.framework in Frameworks */,
+				EC2F6A221834E9030032C836 /* UIKit.framework in Frameworks */,
+				EC2F6A211834E9030032C836 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC2F69ED1834E9030032C836 = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A011834E9030032C836 /* AloneInThePark */,
+				EC2F6A251834E9030032C836 /* AloneInTheParkTests */,
+				EC2F69F81834E9030032C836 /* Frameworks */,
+				EC2F69F71834E9030032C836 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC2F69F71834E9030032C836 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F69F61834E9030032C836 /* AloneInThePark.app */,
+				EC2F6A1E1834E9030032C836 /* AloneInTheParkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC2F69F81834E9030032C836 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F69F91834E9030032C836 /* Foundation.framework */,
+				EC2F69FB1834E9030032C836 /* CoreGraphics.framework */,
+				EC2F69FD1834E9030032C836 /* UIKit.framework */,
+				EC2F69FF1834E9030032C836 /* SpriteKit.framework */,
+				EC2F6A1F1834E9030032C836 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC2F6A011834E9030032C836 /* AloneInThePark */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A40183535290032C836 /* Joystick.h */,
+				EC2F6A41183535290032C836 /* Joystick.m */,
+				EC2F6A0A1834E9030032C836 /* AppDelegate.h */,
+				EC2F6A0B1834E9030032C836 /* AppDelegate.m */,
+				EC2F6A0D1834E9030032C836 /* Main.storyboard */,
+				EC2F6A101834E9030032C836 /* ViewController.h */,
+				EC2F6A111834E9030032C836 /* ViewController.m */,
+				EC2F6A131834E9030032C836 /* MyScene.h */,
+				EC2F6A141834E9030032C836 /* MyScene.m */,
+				EC2F6A161834E9030032C836 /* Spaceship.png */,
+				EC2F6A181834E9030032C836 /* Images.xcassets */,
+				EC2F6A021834E9030032C836 /* Supporting Files */,
+			);
+			path = AloneInThePark;
+			sourceTree = "<group>";
+		};
+		EC2F6A021834E9030032C836 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A47183539210032C836 /* jumpButton.png */,
+				EC2F6A431835355B0032C836 /* dpad.png */,
+				EC2F6A441835355B0032C836 /* joystick.png */,
+				EC2F6A371834EAF20032C836 /* player.png */,
+				EC2F6A031834E9030032C836 /* AloneInThePark-Info.plist */,
+				EC2F6A041834E9030032C836 /* InfoPlist.strings */,
+				EC2F6A071834E9030032C836 /* main.m */,
+				EC2F6A091834E9030032C836 /* AloneInThePark-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC2F6A251834E9030032C836 /* AloneInTheParkTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A2B1834E9030032C836 /* AloneInTheParkTests.m */,
+				EC2F6A261834E9030032C836 /* Supporting Files */,
+			);
+			path = AloneInTheParkTests;
+			sourceTree = "<group>";
+		};
+		EC2F6A261834E9030032C836 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A271834E9030032C836 /* AloneInTheParkTests-Info.plist */,
+				EC2F6A281834E9030032C836 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC2F69F51834E9030032C836 /* AloneInThePark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC2F6A2F1834E9030032C836 /* Build configuration list for PBXNativeTarget "AloneInThePark" */;
+			buildPhases = (
+				EC2F69F21834E9030032C836 /* Sources */,
+				EC2F69F31834E9030032C836 /* Frameworks */,
+				EC2F69F41834E9030032C836 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AloneInThePark;
+			productName = AloneInThePark;
+			productReference = EC2F69F61834E9030032C836 /* AloneInThePark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC2F6A1D1834E9030032C836 /* AloneInTheParkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC2F6A321834E9030032C836 /* Build configuration list for PBXNativeTarget "AloneInTheParkTests" */;
+			buildPhases = (
+				EC2F6A1A1834E9030032C836 /* Sources */,
+				EC2F6A1B1834E9030032C836 /* Frameworks */,
+				EC2F6A1C1834E9030032C836 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC2F6A241834E9030032C836 /* PBXTargetDependency */,
+			);
+			name = AloneInTheParkTests;
+			productName = AloneInTheParkTests;
+			productReference = EC2F6A1E1834E9030032C836 /* AloneInTheParkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC2F69EE1834E9030032C836 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Elton Mendes Vieira Junior";
+				TargetAttributes = {
+					EC2F6A1D1834E9030032C836 = {
+						TestTargetID = EC2F69F51834E9030032C836;
+					};
+				};
+			};
+			buildConfigurationList = EC2F69F11834E9030032C836 /* Build configuration list for PBXProject "AloneInThePark" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC2F69ED1834E9030032C836;
+			productRefGroup = EC2F69F71834E9030032C836 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC2F69F51834E9030032C836 /* AloneInThePark */,
+				EC2F6A1D1834E9030032C836 /* AloneInTheParkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC2F69F41834E9030032C836 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2F6A061834E9030032C836 /* InfoPlist.strings in Resources */,
+				EC2F6A48183539210032C836 /* jumpButton.png in Resources */,
+				EC2F6A381834EAF20032C836 /* player.png in Resources */,
+				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
+				EC2F6A191834E9030032C836 /* Images.xcassets in Resources */,
+				EC2F6A171834E9030032C836 /* Spaceship.png in Resources */,
+				EC2F6A0F1834E9030032C836 /* Main.storyboard in Resources */,
+				EC2F6A461835355B0032C836 /* joystick.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2F6A1C1834E9030032C836 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2F6A2A1834E9030032C836 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC2F69F21834E9030032C836 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2F6A42183535290032C836 /* Joystick.m in Sources */,
+				EC2F6A151834E9030032C836 /* MyScene.m in Sources */,
+				EC2F6A121834E9030032C836 /* ViewController.m in Sources */,
+				EC2F6A0C1834E9030032C836 /* AppDelegate.m in Sources */,
+				EC2F6A081834E9030032C836 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2F6A1A1834E9030032C836 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2F6A2C1834E9030032C836 /* AloneInTheParkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC2F6A241834E9030032C836 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC2F69F51834E9030032C836 /* AloneInThePark */;
+			targetProxy = EC2F6A231834E9030032C836 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC2F6A041834E9030032C836 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC2F6A051834E9030032C836 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EC2F6A0D1834E9030032C836 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC2F6A0E1834E9030032C836 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EC2F6A281834E9030032C836 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC2F6A291834E9030032C836 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC2F6A2D1834E9030032C836 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EC2F6A2E1834E9030032C836 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC2F6A301834E9030032C836 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AloneInThePark/AloneInThePark-Prefix.pch";
+				INFOPLIST_FILE = "AloneInThePark/AloneInThePark-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EC2F6A311834E9030032C836 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AloneInThePark/AloneInThePark-Prefix.pch";
+				INFOPLIST_FILE = "AloneInThePark/AloneInThePark-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		EC2F6A331834E9030032C836 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AloneInThePark.app/AloneInThePark";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AloneInThePark/AloneInThePark-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AloneInTheParkTests/AloneInTheParkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		EC2F6A341834E9030032C836 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AloneInThePark.app/AloneInThePark";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AloneInThePark/AloneInThePark-Prefix.pch";
+				INFOPLIST_FILE = "AloneInTheParkTests/AloneInTheParkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC2F69F11834E9030032C836 /* Build configuration list for PBXProject "AloneInThePark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2F6A2D1834E9030032C836 /* Debug */,
+				EC2F6A2E1834E9030032C836 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC2F6A2F1834E9030032C836 /* Build configuration list for PBXNativeTarget "AloneInThePark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2F6A301834E9030032C836 /* Debug */,
+				EC2F6A311834E9030032C836 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC2F6A321834E9030032C836 /* Build configuration list for PBXNativeTarget "AloneInTheParkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2F6A331834E9030032C836 /* Debug */,
+				EC2F6A341834E9030032C836 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC2F69EE1834E9030032C836 /* Project object */;
+}
