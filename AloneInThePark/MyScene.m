@@ -105,11 +105,16 @@ BOOL isGrounded;
     if(joystick.velocity.x > 0){
         CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
         self.playerNode.position = location;
+        self.playerNode.xScale = 0.5;
+
     }
     else if (joystick.velocity.x < 0){
         CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
-        if(location.x >12)
-        self.playerNode.position = location;
+        if(location.x >12){
+            self.playerNode.position = location;
+            self.playerNode.xScale = -0.5;
+        }
+
     }
 }
 
