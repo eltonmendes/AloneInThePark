@@ -17,7 +17,6 @@
 		EC2F6A0F1834E9030032C836 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A0D1834E9030032C836 /* Main.storyboard */; };
 		EC2F6A121834E9030032C836 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A111834E9030032C836 /* ViewController.m */; };
 		EC2F6A151834E9030032C836 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F6A141834E9030032C836 /* MyScene.m */; };
-		EC2F6A171834E9030032C836 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A161834E9030032C836 /* Spaceship.png */; };
 		EC2F6A191834E9030032C836 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A181834E9030032C836 /* Images.xcassets */; };
 		EC2F6A201834E9030032C836 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F6A1F1834E9030032C836 /* XCTest.framework */; };
 		EC2F6A211834E9030032C836 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69F91834E9030032C836 /* Foundation.framework */; };
@@ -58,7 +57,6 @@
 		EC2F6A111834E9030032C836 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EC2F6A131834E9030032C836 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		EC2F6A141834E9030032C836 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		EC2F6A161834E9030032C836 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		EC2F6A181834E9030032C836 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EC2F6A1E1834E9030032C836 /* AloneInTheParkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AloneInTheParkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2F6A1F1834E9030032C836 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -132,16 +130,11 @@
 		EC2F6A011834E9030032C836 /* AloneInThePark */ = {
 			isa = PBXGroup;
 			children = (
-				EC2F6A40183535290032C836 /* Joystick.h */,
-				EC2F6A41183535290032C836 /* Joystick.m */,
+				EC92525B1835419A0033D289 /* Controller */,
+				EC92525A183540DE0033D289 /* Scenes */,
 				EC2F6A0A1834E9030032C836 /* AppDelegate.h */,
 				EC2F6A0B1834E9030032C836 /* AppDelegate.m */,
 				EC2F6A0D1834E9030032C836 /* Main.storyboard */,
-				EC2F6A101834E9030032C836 /* ViewController.h */,
-				EC2F6A111834E9030032C836 /* ViewController.m */,
-				EC2F6A131834E9030032C836 /* MyScene.h */,
-				EC2F6A141834E9030032C836 /* MyScene.m */,
-				EC2F6A161834E9030032C836 /* Spaceship.png */,
 				EC2F6A181834E9030032C836 /* Images.xcassets */,
 				EC2F6A021834E9030032C836 /* Supporting Files */,
 			);
@@ -151,10 +144,8 @@
 		EC2F6A021834E9030032C836 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EC2F6A47183539210032C836 /* jumpButton.png */,
-				EC2F6A431835355B0032C836 /* dpad.png */,
-				EC2F6A441835355B0032C836 /* joystick.png */,
-				EC2F6A371834EAF20032C836 /* player.png */,
+				EC92525E183542090033D289 /* PlayerAssets */,
+				EC92525D183541FD0033D289 /* JoystickAssets */,
 				EC2F6A031834E9030032C836 /* AloneInThePark-Info.plist */,
 				EC2F6A041834E9030032C836 /* InfoPlist.strings */,
 				EC2F6A071834E9030032C836 /* main.m */,
@@ -179,6 +170,60 @@
 				EC2F6A281834E9030032C836 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC925259183540D20033D289 /* JoystickController */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A40183535290032C836 /* Joystick.h */,
+				EC2F6A41183535290032C836 /* Joystick.m */,
+			);
+			name = JoystickController;
+			sourceTree = "<group>";
+		};
+		EC92525A183540DE0033D289 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A131834E9030032C836 /* MyScene.h */,
+				EC2F6A141834E9030032C836 /* MyScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		EC92525B1835419A0033D289 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EC92525C183541AE0033D289 /* ViewController */,
+				EC925259183540D20033D289 /* JoystickController */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EC92525C183541AE0033D289 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A101834E9030032C836 /* ViewController.h */,
+				EC2F6A111834E9030032C836 /* ViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		EC92525D183541FD0033D289 /* JoystickAssets */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A47183539210032C836 /* jumpButton.png */,
+				EC2F6A431835355B0032C836 /* dpad.png */,
+				EC2F6A441835355B0032C836 /* joystick.png */,
+			);
+			name = JoystickAssets;
+			sourceTree = "<group>";
+		};
+		EC92525E183542090033D289 /* PlayerAssets */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A371834EAF20032C836 /* player.png */,
+			);
+			name = PlayerAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +307,6 @@
 				EC2F6A381834EAF20032C836 /* player.png in Resources */,
 				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
 				EC2F6A191834E9030032C836 /* Images.xcassets in Resources */,
-				EC2F6A171834E9030032C836 /* Spaceship.png in Resources */,
 				EC2F6A0F1834E9030032C836 /* Main.storyboard in Resources */,
 				EC2F6A461835355B0032C836 /* joystick.png in Resources */,
 			);
