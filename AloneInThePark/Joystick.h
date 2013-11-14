@@ -2,8 +2,7 @@
 //  Joystick.h
 //  Joystick
 //
-//  Created by Derrick Liu on 8/6/13.
-//  Copyright (c) 2013 TheSneakyNarwhal. All rights reserved.
+//  Copyright (c) 2013 Elton Mendes Vieira Junior. All rights reserved.
 //
 
 #import <SpriteKit/SpriteKit.h>
