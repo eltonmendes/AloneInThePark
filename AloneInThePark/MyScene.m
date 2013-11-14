@@ -50,7 +50,7 @@ BOOL isGrounded;
         pad = [SKSpriteNode spriteNodeWithImageNamed:@"jumpButton.png"];
         [pad setScale:0.05];
         pad.position = CGPointMake(270, 220);
-        [self addChild:pad];
+        [self addChild:pad]; 
         
         
         
