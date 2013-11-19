@@ -9,5 +9,5 @@ Version Info:
 
 - Physics
 - Joystick
-- Player : Movement + Jump
+- Player : Movement + Jump + Sprite Animation
 - Parallax Test
