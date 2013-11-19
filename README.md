@@ -10,3 +10,4 @@ Version Info:
 - Physics
 - Joystick
 - Player : Movement + Jump
+- Parallax Test
