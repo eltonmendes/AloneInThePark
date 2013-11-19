@@ -29,7 +29,8 @@ BOOL isRunning;
         spriteAnimation = [self spriteAnimation];
         
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
-        backgroundScenario.anchorPoint = CGPointZero;
+        [backgroundScenario setPosition:CGPointMake(50, 300)];
+        [backgroundScenario setScale:0.5];
         [self addChild:backgroundScenario];
         
         world = [[SKNode alloc]init];
@@ -39,20 +40,30 @@ BOOL isRunning;
         
         [self createSceneContents];
         self.playerNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
-        self.playerNode.position = CGPointMake(50,320);
+        self.playerNode.position = CGPointMake(80,210);
         [self.playerNode setScale:0.4];
         self.playerNode.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.playerNode.size.width/2];
         self.playerNode.physicsBody.dynamic = YES;
 
         [self addChild: self.playerNode];
         
+        //Floor
+        
         SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
         floor.position = CGPointMake(100, 200);
-        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 80)];
+        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
         floor.physicsBody.dynamic = NO;
         floor.physicsBody.affectedByGravity = false;
         
         [world addChild:floor];
+        
+        SKSpriteNode *floor2 = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
+        floor2.position = CGPointMake(1300, 200);
+        floor2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
+        floor2.physicsBody.dynamic = NO;
+        floor2.physicsBody.affectedByGravity = false;
+        
+        [world addChild:floor2];
         
         //Joystick
         SKSpriteNode *jsThumb = [SKSpriteNode spriteNodeWithImageNamed:@"joystick.png"];
@@ -103,15 +114,8 @@ BOOL isRunning;
                 [self performSelectorInBackground:@selector(setGrounded) withObject:NO];
             }];
         }
-       
-        
-
     }
-    
-    
 }
-
-
 
 
 -(void) setGrounded{
@@ -125,8 +129,6 @@ BOOL isRunning;
     /* Called before each frame is rendered */
     
     //Ground Position:
-    
-    
     
     if(joystick.velocity.x > 0){
 //        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.001), self.playerNode.position.y);
@@ -154,11 +156,7 @@ BOOL isRunning;
         if(!isRunning){
             [self movePlayerAnimating];
         }
-
-    
     }
-   
-
 }
 
 #pragma worldMovement;
@@ -176,12 +174,12 @@ BOOL isRunning;
 #pragma backgroundParallax;
 
 -(void) backgroundParallaxMoveRight{
-    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
+    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.1), backgroundScenario.position.y) duration:0.1];
     
     [backgroundScenario runAction:backgroundParallax];
 }
 -(void)backgroundParallaxMoveLeft{
-    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
+    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.1), backgroundScenario.position.y) duration:0.1];
     
     [backgroundScenario runAction:backgroundParallax];
 }

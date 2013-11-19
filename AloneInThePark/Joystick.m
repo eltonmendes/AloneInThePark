@@ -89,7 +89,7 @@
                 thumbNode.position = CGPointMake(aX, aY);
             }
         }
-        velocity = CGPointMake(((thumbNode.position.x - self.anchorPointInPoints.x)), ((thumbNode.position.y - self.anchorPointInPoints.y)));
+        velocity = CGPointMake(((thumbNode.position.x - self.anchorPointInPoints.x))/2, ((thumbNode.position.y - self.anchorPointInPoints.y)));
         
         angularVelocity = -atan2(thumbNode.position.x - self.anchorPointInPoints.x, thumbNode.position.y - self.anchorPointInPoints.y);
     }
