@@ -111,11 +111,11 @@ static const uint32_t playerCategory  =  0x1 << 1;
     for(UITouch *touch in touches){
         CGPoint touchLocation = [touch locationInNode:self];
         if(CGRectContainsPoint(pad.frame, touchLocation) && isGrounded){
-            isGrounded = false;
-            CGPoint jumpPoint =  CGPointMake(self.playerNode.position.x, self.playerNode.position.y + 50);
+            //isGrounded = false;
+            CGPoint jumpPoint =  CGPointMake(self.playerNode.position.x, self.playerNode.position.y + 150);
             SKAction *jumpAction = [SKAction moveTo:jumpPoint duration:0.2];
             [self.playerNode runAction:jumpAction completion:^{
-                [self performSelectorInBackground:@selector(setGrounded) withObject:NO];
+                //[self performSelectorInBackground:@selector(setGrounded) withObject:NO];
             }];
         }
     }
