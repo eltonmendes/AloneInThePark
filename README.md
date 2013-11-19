@@ -11,3 +11,4 @@ Version Info:
 - Joystick
 - Player : Movement + Jump + Sprite Animation
 - Parallax Test
+- Box Push + physycs
