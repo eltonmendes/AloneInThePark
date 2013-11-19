@@ -37,6 +37,7 @@
 		ECA45DB0183B8EB500EA8320 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DAA183B8EB500EA8320 /* player2.png */; };
 		ECA45DB1183B8EB500EA8320 /* player1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DAB183B8EB500EA8320 /* player1.png */; };
 		ECA45DB2183B8EB500EA8320 /* player0.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DAC183B8EB500EA8320 /* player0.png */; };
+		ECEE439F183BC746003C6434 /* box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECEE439E183BC746003C6434 /* box.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		ECA45DAA183B8EB500EA8320 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
 		ECA45DAB183B8EB500EA8320 /* player1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player1.png; sourceTree = "<group>"; };
 		ECA45DAC183B8EB500EA8320 /* player0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player0.png; sourceTree = "<group>"; };
+		ECEE439E183BC746003C6434 /* box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = box.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		EC2F6A021834E9030032C836 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ECEE439E183BC746003C6434 /* box.jpg */,
 				ECA45DA0183B837100EA8320 /* Scenario */,
 				EC92525E183542090033D289 /* PlayerAssets */,
 				EC92525D183541FD0033D289 /* JoystickAssets */,
@@ -347,6 +350,7 @@
 				ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */,
 				ECA45DB0183B8EB500EA8320 /* player2.png in Resources */,
 				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
+				ECEE439F183BC746003C6434 /* box.jpg in Resources */,
 				ECA45DAF183B8EB500EA8320 /* player3.png in Resources */,
 				ECA45DB2183B8EB500EA8320 /* player0.png in Resources */,
 				EC2F6A191834E9030032C836 /* Images.xcassets in Resources */,

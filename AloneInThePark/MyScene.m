@@ -12,8 +12,9 @@
 
 Joystick *joystick;
 SKSpriteNode *pad;
-SKNode *world;
 SKSpriteNode *backgroundScenario;
+SKSpriteNode *box1;
+SKNode *world;
 SKAction *spriteAnimation;
 
 BOOL isJumping;
@@ -29,7 +30,7 @@ BOOL isRunning;
         spriteAnimation = [self spriteAnimation];
         
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
-        [backgroundScenario setPosition:CGPointMake(50, 300)];
+        [backgroundScenario setPosition:CGPointMake(250, 300)];
         [backgroundScenario setScale:0.5];
         [self addChild:backgroundScenario];
         
@@ -39,31 +40,16 @@ BOOL isRunning;
 
         
         [self createSceneContents];
+        
         self.playerNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
-        self.playerNode.position = CGPointMake(80,210);
+        self.playerNode.position = CGPointMake(80,220);
         [self.playerNode setScale:0.4];
-        self.playerNode.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.playerNode.size.width/2];
+        self.playerNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(35, 45)];
         self.playerNode.physicsBody.dynamic = YES;
-
+        self.playerNode.physicsBody.mass = 100;
         [self addChild: self.playerNode];
         
-        //Floor
-        
-        SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
-        floor.position = CGPointMake(100, 200);
-        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
-        floor.physicsBody.dynamic = NO;
-        floor.physicsBody.affectedByGravity = false;
-        
-        [world addChild:floor];
-        
-        SKSpriteNode *floor2 = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
-        floor2.position = CGPointMake(1300, 200);
-        floor2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
-        floor2.physicsBody.dynamic = NO;
-        floor2.physicsBody.affectedByGravity = false;
-        
-        [world addChild:floor2];
+        [self addFloor];
         
         //Joystick
         SKSpriteNode *jsThumb = [SKSpriteNode spriteNodeWithImageNamed:@"joystick.png"];
@@ -78,6 +64,16 @@ BOOL isRunning;
         [pad setScale:0.05];
         pad.position = CGPointMake(270, 220);
         [self addChild:pad];
+        
+        //Box
+        box1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"box.jpg"]];
+        box1.position = CGPointMake(180,220);
+        [box1 setScale:0.1];
+        box1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:box1.size];
+        box1.physicsBody.dynamic = YES;
+        [box1.physicsBody setAffectedByGravity:YES];
+        box1.physicsBody.mass = 4;
+        [world addChild:box1];
         
 
         
@@ -159,32 +155,53 @@ BOOL isRunning;
     }
 }
 
+#pragma scene configs and scenario
+- (void)addFloor{
+    //Floor
+    
+    SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
+    floor.position = CGPointMake(100, 200);
+    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
+    floor.physicsBody.dynamic = NO;
+    floor.physicsBody.affectedByGravity = false;
+    
+    [world addChild:floor];
+    
+    SKSpriteNode *floor2 = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
+    floor2.position = CGPointMake(1300, 200);
+    floor2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
+    floor2.physicsBody.dynamic = NO;
+    floor2.physicsBody.affectedByGravity = false;
+    
+    [world addChild:floor2];
+}
+
 #pragma worldMovement;
 
--(void) worldMoveRight{
+- (void)worldMoveRight{
     SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
     [world runAction:sceneFollow];
 }
 
--(void)worldMoveLeft{
+- (void)worldMoveLeft{
     SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
     [world runAction:sceneFollow];
 }
 
 #pragma backgroundParallax;
 
--(void) backgroundParallaxMoveRight{
+- (void)backgroundParallaxMoveRight{
     SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.1), backgroundScenario.position.y) duration:0.1];
     
     [backgroundScenario runAction:backgroundParallax];
 }
--(void)backgroundParallaxMoveLeft{
+- (void)backgroundParallaxMoveLeft{
     SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.1), backgroundScenario.position.y) duration:0.1];
     
     [backgroundScenario runAction:backgroundParallax];
 }
 
--(void) movePlayerAnimating{
+- (void) movePlayerAnimating{
     isRunning = true;
     [self.playerNode runAction:spriteAnimation completion:^{
         [self performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
@@ -192,12 +209,12 @@ BOOL isRunning;
     }];
 }
 
--(void) removePlayerAnimation{
+- (void)removePlayerAnimation{
     [self.playerNode removeAllActions];
     [self.playerNode setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
 }
 
--(SKAction *) spriteAnimation{
+- (SKAction*)spriteAnimation{
     NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
 
     for(int i =1;i<6;i++){
