@@ -43,7 +43,7 @@ BOOL isGrounded;
         
         SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
         floor.position = CGPointMake(100, 200);
-        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1700, 80)];
+        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 80)];
         floor.physicsBody.dynamic = NO;
         floor.physicsBody.affectedByGravity = false;
         
