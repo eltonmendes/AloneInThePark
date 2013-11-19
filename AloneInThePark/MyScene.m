@@ -11,7 +11,9 @@
 @implementation MyScene
 
 Joystick *joystick;
-SKSpriteNode * pad;
+SKSpriteNode *pad;
+SKNode *world;
+SKSpriteNode *backgroundScenario;
 
 BOOL isJumping;
 BOOL isGrounded;
@@ -20,6 +22,15 @@ BOOL isGrounded;
         /* Setup your scene here */
         
         isGrounded = true;
+        
+        backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
+        backgroundScenario.anchorPoint = CGPointZero;
+        [self addChild:backgroundScenario];
+        
+        world = [[SKNode alloc]init];
+        [self addChild:world];
+
+
         
         [self createSceneContents];
         self.playerNode = [SKSpriteNode spriteNodeWithImageNamed:@"player.png"];
@@ -30,13 +41,13 @@ BOOL isGrounded;
 
         [self addChild: self.playerNode];
         
-        SKSpriteNode *floor = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:CGSizeMake(700, 80)];
+        SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
         floor.position = CGPointMake(100, 200);
-        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(700, 80)];
+        floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1700, 80)];
         floor.physicsBody.dynamic = NO;
         floor.physicsBody.affectedByGravity = false;
         
-        [self addChild:floor];
+        [world addChild:floor];
         
         //Joystick
         SKSpriteNode *jsThumb = [SKSpriteNode spriteNodeWithImageNamed:@"joystick.png"];
@@ -50,9 +61,9 @@ BOOL isGrounded;
         pad = [SKSpriteNode spriteNodeWithImageNamed:@"jumpButton.png"];
         [pad setScale:0.05];
         pad.position = CGPointMake(270, 220);
-        [self addChild:pad]; 
+        [self addChild:pad];
         
-        
+
         
     }
     return self;
@@ -87,11 +98,15 @@ BOOL isGrounded;
                 [self performSelectorInBackground:@selector(setGrounded) withObject:NO];
             }];
         }
+        
 
     }
+    
+    
 }
 
 -(void) setGrounded{
+   
     [NSThread sleepForTimeInterval:0.3];
     isGrounded = true;
 
@@ -106,6 +121,14 @@ BOOL isGrounded;
         CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
         self.playerNode.position = location;
         self.playerNode.xScale = 0.5;
+        //Camera Follow
+        SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
+        [world runAction:sceneFollow];
+
+        
+        SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
+        
+        [backgroundScenario runAction:backgroundParallax];
 
     }
     else if (joystick.velocity.x < 0){
@@ -114,8 +137,18 @@ BOOL isGrounded;
             self.playerNode.position = location;
             self.playerNode.xScale = -0.5;
         }
+        SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
+        [world runAction:sceneFollow];
+        
+        SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
 
+        [backgroundScenario runAction:backgroundParallax];
+        
+       
     }
+    
+   
+
 }
 
 @end

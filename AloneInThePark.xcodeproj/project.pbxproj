@@ -28,6 +28,9 @@
 		EC2F6A451835355B0032C836 /* dpad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A431835355B0032C836 /* dpad.png */; };
 		EC2F6A461835355B0032C836 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A441835355B0032C836 /* joystick.png */; };
 		EC2F6A48183539210032C836 /* jumpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A47183539210032C836 /* jumpButton.png */; };
+		ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */; };
+		ECA45DA4183B846C00EA8320 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA3183B846C00EA8320 /* background.jpg */; };
+		ECA45DA6183B870300EA8320 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA5183B870300EA8320 /* floor.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		EC2F6A431835355B0032C836 /* dpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dpad.png; sourceTree = "<group>"; };
 		EC2F6A441835355B0032C836 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		EC2F6A47183539210032C836 /* jumpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpButton.png; sourceTree = "<group>"; };
+		ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundGame.jpg; sourceTree = "<group>"; };
+		ECA45DA3183B846C00EA8320 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		ECA45DA5183B870300EA8320 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 		EC2F6A021834E9030032C836 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ECA45DA0183B837100EA8320 /* Scenario */,
 				EC92525E183542090033D289 /* PlayerAssets */,
 				EC92525D183541FD0033D289 /* JoystickAssets */,
 				EC2F6A031834E9030032C836 /* AloneInThePark-Info.plist */,
@@ -226,6 +233,16 @@
 			name = PlayerAssets;
 			sourceTree = "<group>";
 		};
+		ECA45DA0183B837100EA8320 /* Scenario */ = {
+			isa = PBXGroup;
+			children = (
+				ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */,
+				ECA45DA3183B846C00EA8320 /* background.jpg */,
+				ECA45DA5183B870300EA8320 /* floor.jpg */,
+			);
+			name = Scenario;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,9 +319,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA45DA4183B846C00EA8320 /* background.jpg in Resources */,
 				EC2F6A061834E9030032C836 /* InfoPlist.strings in Resources */,
 				EC2F6A48183539210032C836 /* jumpButton.png in Resources */,
+				ECA45DA6183B870300EA8320 /* floor.jpg in Resources */,
 				EC2F6A381834EAF20032C836 /* player.png in Resources */,
+				ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */,
 				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
 				EC2F6A191834E9030032C836 /* Images.xcassets in Resources */,
 				EC2F6A0F1834E9030032C836 /* Main.storyboard in Resources */,
