@@ -31,6 +31,7 @@
 		EC668DAF183BD5FF002190AE /* FireParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = EC668DAD183BD5FF002190AE /* FireParticle.sks */; };
 		EC668DB0183BD5FF002190AE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EC668DAE183BD5FF002190AE /* spark.png */; };
 		EC668DB5183BD724002190AE /* BoxSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EC668DB4183BD724002190AE /* BoxSpriteNode.m */; };
+		EC668DB9183BE9C6002190AE /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EC668DB8183BE9C6002190AE /* PlayerSpriteNode.m */; };
 		ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */; };
 		ECA45DA4183B846C00EA8320 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA3183B846C00EA8320 /* background.jpg */; };
 		ECA45DA6183B870300EA8320 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA5183B870300EA8320 /* floor.jpg */; };
@@ -86,6 +87,8 @@
 		EC668DAE183BD5FF002190AE /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		EC668DB3183BD724002190AE /* BoxSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSpriteNode.h; sourceTree = "<group>"; };
 		EC668DB4183BD724002190AE /* BoxSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSpriteNode.m; sourceTree = "<group>"; };
+		EC668DB7183BE9C6002190AE /* PlayerSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSpriteNode.h; sourceTree = "<group>"; };
+		EC668DB8183BE9C6002190AE /* PlayerSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSpriteNode.m; sourceTree = "<group>"; };
 		ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundGame.jpg; sourceTree = "<group>"; };
 		ECA45DA3183B846C00EA8320 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		ECA45DA5183B870300EA8320 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 		EC668DB1183BD6FB002190AE /* GameContents */ = {
 			isa = PBXGroup;
 			children = (
+				EC668DB6183BE9B1002190AE /* Player */,
 				EC668DB2183BD70C002190AE /* Box */,
 			);
 			name = GameContents;
@@ -219,6 +223,15 @@
 				EC668DB4183BD724002190AE /* BoxSpriteNode.m */,
 			);
 			name = Box;
+			sourceTree = "<group>";
+		};
+		EC668DB6183BE9B1002190AE /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				EC668DB7183BE9C6002190AE /* PlayerSpriteNode.h */,
+				EC668DB8183BE9C6002190AE /* PlayerSpriteNode.m */,
+			);
+			name = Player;
 			sourceTree = "<group>";
 		};
 		EC925259183540D20033D289 /* JoystickController */ = {
@@ -409,6 +422,7 @@
 				EC2F6A121834E9030032C836 /* ViewController.m in Sources */,
 				EC2F6A0C1834E9030032C836 /* AppDelegate.m in Sources */,
 				EC668DB5183BD724002190AE /* BoxSpriteNode.m in Sources */,
+				EC668DB9183BE9C6002190AE /* PlayerSpriteNode.m in Sources */,
 				EC2F6A081834E9030032C836 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

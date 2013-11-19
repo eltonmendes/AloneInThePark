@@ -9,12 +9,14 @@
 #import "MyScene.h"
 #import "Joystick.h"
 #import "BoxSpriteNode.h"
+#import "PlayerSpriteNode.h"
 @implementation MyScene
 
 Joystick *joystick;
 SKSpriteNode *pad;
 SKSpriteNode *backgroundScenario;
 BoxSpriteNode *box1;
+PlayerSpriteNode *player;
 SKNode *world;
 SKAction *spriteAnimation;
 
@@ -43,23 +45,20 @@ static const uint32_t playerCategory  =  0x1 << 1;
 
 
         
-        [self createSceneContents];
         
-        self.playerNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
-        self.playerNode.position = CGPointMake(80,220);
-        [self.playerNode setScale:0.4];
-        self.playerNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(35, 45)];
-        self.playerNode.physicsBody.dynamic = YES;
-        self.playerNode.physicsBody.mass = 100;
-        self.playerNode.physicsBody.usesPreciseCollisionDetection = YES;
-        self.playerNode.physicsBody.categoryBitMask = playerCategory;
-        self.playerNode.physicsBody.collisionBitMask = playerCategory | boxCategory ;
-        self.playerNode.physicsBody.contactTestBitMask = playerCategory | boxCategory;
-        [self addChild: self.playerNode];
+        
+        //Player
+        
+        player = [[PlayerSpriteNode alloc ]initWithTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
+        player.physicsBody.categoryBitMask = playerCategory;
+        player.physicsBody.collisionBitMask = playerCategory | boxCategory ;
+        player.physicsBody.contactTestBitMask = playerCategory | boxCategory;
+        [self addChild:player];
         
         [self addFloor];
         
         //Joystick
+        
         SKSpriteNode *jsThumb = [SKSpriteNode spriteNodeWithImageNamed:@"joystick.png"];
         SKSpriteNode *jsBackdrop = [SKSpriteNode spriteNodeWithImageNamed:@"dpad.png"];
         joystick = [Joystick joystickWithThumb:jsThumb andBackdrop:jsBackdrop];
@@ -98,12 +97,7 @@ static const uint32_t playerCategory  =  0x1 << 1;
     CGPoint cameraPositionInScene = [node.scene convertPoint:node.position fromNode:node.parent];
     node.parent.position = CGPointMake(node.parent.position.x - cameraPositionInScene.x,                                       node.parent.position.y - cameraPositionInScene.y);
 }
-- (void) createSceneContents
-{
-    //    self.backgroundColor = [SKColor blackColor];
-    self.scaleMode = SKSceneScaleModeResizeFill;
-    //    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
-}
+
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
@@ -112,9 +106,9 @@ static const uint32_t playerCategory  =  0x1 << 1;
         CGPoint touchLocation = [touch locationInNode:self];
         if(CGRectContainsPoint(pad.frame, touchLocation) && isGrounded){
             //isGrounded = false;
-            CGPoint jumpPoint =  CGPointMake(self.playerNode.position.x, self.playerNode.position.y + 150);
+            CGPoint jumpPoint =  CGPointMake(player.position.x, player.position.y + 150);
             SKAction *jumpAction = [SKAction moveTo:jumpPoint duration:0.2];
-            [self.playerNode runAction:jumpAction completion:^{
+            [player runAction:jumpAction completion:^{
                 //[self performSelectorInBackground:@selector(setGrounded) withObject:NO];
             }];
         }
@@ -135,9 +129,7 @@ static const uint32_t playerCategory  =  0x1 << 1;
     //Ground Position:
     
     if(joystick.velocity.x > 0){
-//        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.001), self.playerNode.position.y);
-//        self.playerNode.position = location;
-        self.playerNode.xScale = -0.5;
+        player.xScale = -0.5;
         
         [self worldMoveRight];
         [self backgroundParallaxMoveRight];
@@ -148,11 +140,7 @@ static const uint32_t playerCategory  =  0x1 << 1;
        
     }
     else if (joystick.velocity.x < 0){
-        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.001), self.playerNode.position.y);
-        if(location.x >12){
-//            self.playerNode.position = location;
-            self.playerNode.xScale = 0.5;
-        }
+        player.xScale = 0.5;
       
         [self worldMoveRight];
         [self backgroundParallaxMoveLeft];
@@ -239,15 +227,15 @@ static const uint32_t playerCategory  =  0x1 << 1;
 
 - (void) movePlayerAnimating{
     isRunning = true;
-    [self.playerNode runAction:spriteAnimation completion:^{
+    [player runAction:spriteAnimation completion:^{
         [self performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
         isRunning = false;
     }];
 }
 
 - (void)removePlayerAnimation{
-    [self.playerNode removeAllActions];
-    [self.playerNode setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
+    [player removeAllActions];
+    [player setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
 }
 
 - (SKAction*)spriteAnimation{
