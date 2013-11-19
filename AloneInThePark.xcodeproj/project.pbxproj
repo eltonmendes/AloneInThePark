@@ -28,6 +28,9 @@
 		EC2F6A451835355B0032C836 /* dpad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A431835355B0032C836 /* dpad.png */; };
 		EC2F6A461835355B0032C836 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A441835355B0032C836 /* joystick.png */; };
 		EC2F6A48183539210032C836 /* jumpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EC2F6A47183539210032C836 /* jumpButton.png */; };
+		EC668DAF183BD5FF002190AE /* FireParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = EC668DAD183BD5FF002190AE /* FireParticle.sks */; };
+		EC668DB0183BD5FF002190AE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EC668DAE183BD5FF002190AE /* spark.png */; };
+		EC668DB5183BD724002190AE /* BoxSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EC668DB4183BD724002190AE /* BoxSpriteNode.m */; };
 		ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */; };
 		ECA45DA4183B846C00EA8320 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA3183B846C00EA8320 /* background.jpg */; };
 		ECA45DA6183B870300EA8320 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA5183B870300EA8320 /* floor.jpg */; };
@@ -79,6 +82,10 @@
 		EC2F6A431835355B0032C836 /* dpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dpad.png; sourceTree = "<group>"; };
 		EC2F6A441835355B0032C836 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		EC2F6A47183539210032C836 /* jumpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpButton.png; sourceTree = "<group>"; };
+		EC668DAD183BD5FF002190AE /* FireParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticle.sks; sourceTree = "<group>"; };
+		EC668DAE183BD5FF002190AE /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		EC668DB3183BD724002190AE /* BoxSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSpriteNode.h; sourceTree = "<group>"; };
+		EC668DB4183BD724002190AE /* BoxSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSpriteNode.m; sourceTree = "<group>"; };
 		ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundGame.jpg; sourceTree = "<group>"; };
 		ECA45DA3183B846C00EA8320 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		ECA45DA5183B870300EA8320 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -150,6 +157,7 @@
 		EC2F6A011834E9030032C836 /* AloneInThePark */ = {
 			isa = PBXGroup;
 			children = (
+				EC668DB1183BD6FB002190AE /* GameContents */,
 				EC92525B1835419A0033D289 /* Controller */,
 				EC92525A183540DE0033D289 /* Scenes */,
 				EC2F6A0A1834E9030032C836 /* AppDelegate.h */,
@@ -157,6 +165,8 @@
 				EC2F6A0D1834E9030032C836 /* Main.storyboard */,
 				EC2F6A181834E9030032C836 /* Images.xcassets */,
 				EC2F6A021834E9030032C836 /* Supporting Files */,
+				EC668DAD183BD5FF002190AE /* FireParticle.sks */,
+				EC668DAE183BD5FF002190AE /* spark.png */,
 			);
 			path = AloneInThePark;
 			sourceTree = "<group>";
@@ -192,6 +202,23 @@
 				EC2F6A281834E9030032C836 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC668DB1183BD6FB002190AE /* GameContents */ = {
+			isa = PBXGroup;
+			children = (
+				EC668DB2183BD70C002190AE /* Box */,
+			);
+			name = GameContents;
+			sourceTree = "<group>";
+		};
+		EC668DB2183BD70C002190AE /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				EC668DB3183BD724002190AE /* BoxSpriteNode.h */,
+				EC668DB4183BD724002190AE /* BoxSpriteNode.m */,
+			);
+			name = Box;
 			sourceTree = "<group>";
 		};
 		EC925259183540D20033D289 /* JoystickController */ = {
@@ -344,7 +371,9 @@
 				EC2F6A061834E9030032C836 /* InfoPlist.strings in Resources */,
 				EC2F6A48183539210032C836 /* jumpButton.png in Resources */,
 				ECA45DB1183B8EB500EA8320 /* player1.png in Resources */,
+				EC668DAF183BD5FF002190AE /* FireParticle.sks in Resources */,
 				ECA45DAE183B8EB500EA8320 /* player4.png in Resources */,
+				EC668DB0183BD5FF002190AE /* spark.png in Resources */,
 				ECA45DA6183B870300EA8320 /* floor.jpg in Resources */,
 				EC2F6A381834EAF20032C836 /* player.png in Resources */,
 				ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */,
@@ -379,6 +408,7 @@
 				EC2F6A151834E9030032C836 /* MyScene.m in Sources */,
 				EC2F6A121834E9030032C836 /* ViewController.m in Sources */,
 				EC2F6A0C1834E9030032C836 /* AppDelegate.m in Sources */,
+				EC668DB5183BD724002190AE /* BoxSpriteNode.m in Sources */,
 				EC2F6A081834E9030032C836 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,25 +8,29 @@
 
 #import "MyScene.h"
 #import "Joystick.h"
+#import "BoxSpriteNode.h"
 @implementation MyScene
 
 Joystick *joystick;
 SKSpriteNode *pad;
 SKSpriteNode *backgroundScenario;
-SKSpriteNode *box1;
+BoxSpriteNode *box1;
 SKNode *world;
 SKAction *spriteAnimation;
 
 BOOL isJumping;
 BOOL isGrounded;
 BOOL isRunning;
+static const uint32_t boxCategory     =  0x1 << 0;
+static const uint32_t playerCategory  =  0x1 << 1;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
         isGrounded = true;
-        
+        self.physicsWorld.contactDelegate = self;
+
         spriteAnimation = [self spriteAnimation];
         
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
@@ -47,6 +51,10 @@ BOOL isRunning;
         self.playerNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(35, 45)];
         self.playerNode.physicsBody.dynamic = YES;
         self.playerNode.physicsBody.mass = 100;
+        self.playerNode.physicsBody.usesPreciseCollisionDetection = YES;
+        self.playerNode.physicsBody.categoryBitMask = playerCategory;
+        self.playerNode.physicsBody.collisionBitMask = playerCategory | boxCategory ;
+        self.playerNode.physicsBody.contactTestBitMask = playerCategory | boxCategory;
         [self addChild: self.playerNode];
         
         [self addFloor];
@@ -66,15 +74,15 @@ BOOL isRunning;
         [self addChild:pad];
         
         //Box
-        box1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"box.jpg"]];
+        
+        box1 = [[BoxSpriteNode alloc]initWithImageNamed:@"box.jpg"];
         box1.position = CGPointMake(180,220);
         [box1 setScale:0.1];
-        box1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:box1.size];
-        box1.physicsBody.dynamic = YES;
-        [box1.physicsBody setAffectedByGravity:YES];
-        box1.physicsBody.mass = 10;
+        box1.physicsBody.categoryBitMask = boxCategory;
         [world addChild:box1];
         
+        
+
 
         
     }
@@ -152,6 +160,34 @@ BOOL isRunning;
         if(!isRunning){
             [self movePlayerAnimating];
         }
+    }
+    
+    [box1.particle setParticlePosition:box1.position];
+    
+}
+
+
+#pragma physycs delegate
+
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    if(contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == boxCategory){
+        //Start fires at box when player touch box
+        
+        
+        if(!box1.isDamaged){
+            
+            //Particle Scene
+            
+            NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"FireParticle" ofType:@"sks"];
+            SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
+            [myParticle setScale:1];
+            myParticle.particlePosition = CGPointMake(box1.position.x+50, box1.position.y);
+            
+            [world addChild:myParticle];
+            [box1 setParticle:myParticle];
+            [box1 setIsDamaged:YES];
+        }
+       
     }
 }
 
