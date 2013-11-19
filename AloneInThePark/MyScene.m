@@ -72,7 +72,7 @@ BOOL isRunning;
         box1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:box1.size];
         box1.physicsBody.dynamic = YES;
         [box1.physicsBody setAffectedByGravity:YES];
-        box1.physicsBody.mass = 4;
+        box1.physicsBody.mass = 10;
         [world addChild:box1];
         
 
