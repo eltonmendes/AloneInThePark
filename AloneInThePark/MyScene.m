@@ -14,14 +14,19 @@ Joystick *joystick;
 SKSpriteNode *pad;
 SKNode *world;
 SKSpriteNode *backgroundScenario;
+SKAction *spriteAnimation;
 
 BOOL isJumping;
 BOOL isGrounded;
+BOOL isRunning;
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
         isGrounded = true;
+        
+        spriteAnimation = [self spriteAnimation];
         
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
         backgroundScenario.anchorPoint = CGPointZero;
@@ -33,9 +38,9 @@ BOOL isGrounded;
 
         
         [self createSceneContents];
-        self.playerNode = [SKSpriteNode spriteNodeWithImageNamed:@"player.png"];
+        self.playerNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
         self.playerNode.position = CGPointMake(50,320);
-        [self.playerNode setScale:0.5];
+        [self.playerNode setScale:0.4];
         self.playerNode.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.playerNode.size.width/2];
         self.playerNode.physicsBody.dynamic = YES;
 
@@ -98,12 +103,16 @@ BOOL isGrounded;
                 [self performSelectorInBackground:@selector(setGrounded) withObject:NO];
             }];
         }
+       
         
 
     }
     
     
 }
+
+
+
 
 -(void) setGrounded{
    
@@ -117,38 +126,87 @@ BOOL isGrounded;
     
     //Ground Position:
     
+    
+    
     if(joystick.velocity.x > 0){
-        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
-        self.playerNode.position = location;
-        self.playerNode.xScale = 0.5;
-        //Camera Follow
-        SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
-        [world runAction:sceneFollow];
-
+//        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.001), self.playerNode.position.y);
+//        self.playerNode.position = location;
+        self.playerNode.xScale = -0.5;
         
-        SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
-        
-        [backgroundScenario runAction:backgroundParallax];
-
-    }
-    else if (joystick.velocity.x < 0){
-        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.05), self.playerNode.position.y);
-        if(location.x >12){
-            self.playerNode.position = location;
-            self.playerNode.xScale = -0.5;
+        [self worldMoveRight];
+        [self backgroundParallaxMoveRight];
+       
+        if(!isRunning){
+            [self movePlayerAnimating];
         }
-        SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
-        [world runAction:sceneFollow];
-        
-        SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
-
-        [backgroundScenario runAction:backgroundParallax];
-        
        
     }
+    else if (joystick.velocity.x < 0){
+        CGPoint location = CGPointMake(self.playerNode.position.x + (joystick.velocity.x * 0.001), self.playerNode.position.y);
+        if(location.x >12){
+//            self.playerNode.position = location;
+            self.playerNode.xScale = 0.5;
+        }
+      
+        [self worldMoveRight];
+        [self backgroundParallaxMoveLeft];
+        
+        if(!isRunning){
+            [self movePlayerAnimating];
+        }
+
     
+    }
    
 
+}
+
+#pragma worldMovement;
+
+-(void) worldMoveRight{
+    SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
+    [world runAction:sceneFollow];
+}
+
+-(void)worldMoveLeft{
+    SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
+    [world runAction:sceneFollow];
+}
+
+#pragma backgroundParallax;
+
+-(void) backgroundParallaxMoveRight{
+    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
+    
+    [backgroundScenario runAction:backgroundParallax];
+}
+-(void)backgroundParallaxMoveLeft{
+    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 0.01), world.position.y) duration:0.1];
+    
+    [backgroundScenario runAction:backgroundParallax];
+}
+
+-(void) movePlayerAnimating{
+    isRunning = true;
+    [self.playerNode runAction:spriteAnimation completion:^{
+        [self performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
+        isRunning = false;
+    }];
+}
+
+-(void) removePlayerAnimation{
+    [self.playerNode removeAllActions];
+    [self.playerNode setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
+}
+
+-(SKAction *) spriteAnimation{
+    NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
+
+    for(int i =1;i<6;i++){
+        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%i.png",i]];
+        [texturesArray addObject:texture];
+    }
+    return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
 }
 
 @end
