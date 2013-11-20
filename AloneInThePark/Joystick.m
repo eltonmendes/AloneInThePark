@@ -44,7 +44,7 @@
 {
     if( self = [self initWithThumb: aNode])
     {
-        [self setScale:0.3];
+        [self setScale:0.5];
         [bgNode setScale:0.9f];
         [bgNode setPosition: self.anchorPointInPoints];
         [self addChild:bgNode];

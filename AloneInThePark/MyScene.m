@@ -68,7 +68,7 @@ static const uint32_t playerCategory  =  0x1 << 1;
         //Keypad
         
         pad = [SKSpriteNode spriteNodeWithImageNamed:@"jumpButton.png"];
-        [pad setScale:0.05];
+        [pad setScale:0.1];
         pad.position = CGPointMake(270, 220);
         [self addChild:pad];
         
