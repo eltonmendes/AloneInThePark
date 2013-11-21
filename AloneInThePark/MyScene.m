@@ -21,8 +21,6 @@ FloorButtonSpriteNode *floorButton;
 BoxSpriteNode *box1;
 PlayerSpriteNode *player;
 SKNode *world;
-SKAction *spriteWalkAnimation;
-SKAction *spriteJumpAnimation;
 BOOL isJumping;
 BOOL isGrounded;
 BOOL isRunning;
@@ -37,8 +35,6 @@ static const uint32_t playerCategory      =  0x1 << 2;
         isGrounded = true;
         self.physicsWorld.contactDelegate = self;
         [self.physicsWorld setGravity:CGVectorMake(0, -5)];
-        spriteWalkAnimation = [self spriteWalkAnimation];
-        spriteJumpAnimation = [self spriteJumpAnimation];
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
         [backgroundScenario setPosition:CGPointMake(250, 300)];
         [backgroundScenario setScale:0.5];
@@ -111,14 +107,14 @@ static const uint32_t playerCategory      =  0x1 << 2;
     for(UITouch *touch in touches){
         CGPoint touchLocation = [touch locationInNode:self];
         if(CGRectContainsPoint(pad.frame, touchLocation) && isGrounded){
-            //isGrounded = false;
+            isGrounded = false;
             CGPoint jumpPoint =  CGPointMake(player.position.x, player.position.y + 50);
             SKAction *jumpAction = [SKAction moveTo:jumpPoint duration:0.2];
 
             [player runAction:jumpAction completion:^{
                 [self performSelectorInBackground:@selector(setGrounded) withObject:NO];
             }];
-            [player runAction:spriteJumpAnimation completion:^{
+            [player runAction:player.spriteJumpAnimation completion:^{
                 
             }];
         }
@@ -193,15 +189,15 @@ static const uint32_t playerCategory      =  0x1 << 2;
             [floorButton runAction:buttonPressed];
             floorButton.isPressed = true;
             NSLog(@"run action");
-            SKAction *rotateBridge = [SKAction rotateToAngle:(M_PI / 2) duration:1];
-            SKAction *moveBridge = [SKAction moveToX:bridge.position.x - 90 duration:1];
-            SKAction *moveBridgey = [SKAction moveToY:bridge.position.y - 85 duration:1];
+            SKAction *rotateBridge = [SKAction rotateToAngle:(M_PI / 2) duration:0.5];
+            SKAction *moveBridge = [SKAction moveToX:bridge.position.x - 90 duration:0.5];
+            SKAction *moveBridgey = [SKAction moveToY:bridge.position.y - 85 duration:0.5];
             [bridge runAction:rotateBridge completion:^{
-//                box1.physicsBody.dynamic = YES];
+                [box1 removeCollision];
+
             }];
             [bridge runAction:moveBridge];
             [bridge runAction:moveBridgey];
-
         }
   
     }
@@ -270,7 +266,7 @@ static const uint32_t playerCategory      =  0x1 << 2;
 
 - (void) movePlayerAnimating{
     isRunning = true;
-    [player runAction:spriteWalkAnimation completion:^{
+    [player runAction:player.spriteWalkAnimation completion:^{
         [self performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
         isRunning = false;
     }];
@@ -281,24 +277,6 @@ static const uint32_t playerCategory      =  0x1 << 2;
     [player setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
 }
 
-- (SKAction*)spriteWalkAnimation{
-    NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
 
-    for(int i =1;i<6;i++){
-        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%i.png",i]];
-        [texturesArray addObject:texture];
-    }
-    return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
-}
-
-- (SKAction*)spriteJumpAnimation{
-    NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
-    
-    for(int i =1;i<6;i++){
-        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"jump_0%i.png",i]];
-        [texturesArray addObject:texture];
-    }
-    return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
-}
 
 @end

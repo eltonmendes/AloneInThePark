@@ -9,5 +9,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface PlayerSpriteNode : SKSpriteNode
-
+@property (nonatomic,retain) SKAction *spriteWalkAnimation;
+@property (nonatomic,retain) SKAction *spriteJumpAnimation;
 @end

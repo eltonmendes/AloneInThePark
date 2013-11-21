@@ -7,6 +7,7 @@
 //
 
 #import "BoxSpriteNode.h"
+static const uint32_t uncategory         =  0x1 << 0;
 
 @implementation BoxSpriteNode
 
@@ -21,5 +22,11 @@
     self.physicsBody.usesPreciseCollisionDetection = YES;
     
     return self;
+}
+
+-(void)removeCollision{
+    self.physicsBody.categoryBitMask = uncategory;
+    self.physicsBody.collisionBitMask = uncategory;
+    self.physicsBody.contactTestBitMask = uncategory;
 }
 @end

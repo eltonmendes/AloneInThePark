@@ -21,5 +21,24 @@
     
     return self;
 }
+- (SKAction*)spriteWalkAnimation{
+    NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
+    
+    for(int i =1;i<6;i++){
+        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%i.png",i]];
+        [texturesArray addObject:texture];
+    }
+    return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
+}
+
+- (SKAction*)spriteJumpAnimation{
+    NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
+    
+    for(int i =1;i<6;i++){
+        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"jump_0%i.png",i]];
+        [texturesArray addObject:texture];
+    }
+    return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
+}
 
 @end

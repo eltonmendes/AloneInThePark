@@ -12,4 +12,7 @@
 
 @property (nonatomic)BOOL isDamaged;
 @property (nonatomic,retain) SKEmitterNode *particle;
+
+-(void)removeCollision;
+
 @end
