@@ -10,21 +10,25 @@
 #import "Joystick.h"
 #import "BoxSpriteNode.h"
 #import "PlayerSpriteNode.h"
+#import "FloorButtonSpriteNode.h"
 @implementation MyScene
 
 Joystick *joystick;
 SKSpriteNode *pad;
 SKSpriteNode *backgroundScenario;
+SKSpriteNode *bridge;
+FloorButtonSpriteNode *floorButton;
 BoxSpriteNode *box1;
 PlayerSpriteNode *player;
 SKNode *world;
-SKAction *spriteAnimation;
-
+SKAction *spriteWalkAnimation;
+SKAction *spriteJumpAnimation;
 BOOL isJumping;
 BOOL isGrounded;
 BOOL isRunning;
-static const uint32_t boxCategory     =  0x1 << 0;
-static const uint32_t playerCategory  =  0x1 << 1;
+static const uint32_t boxCategory         =  0x1 << 0;
+static const uint32_t floorButtonCategory =  0x1 << 1;
+static const uint32_t playerCategory      =  0x1 << 2;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -32,9 +36,9 @@ static const uint32_t playerCategory  =  0x1 << 1;
         
         isGrounded = true;
         self.physicsWorld.contactDelegate = self;
-
-        spriteAnimation = [self spriteAnimation];
-        
+        [self.physicsWorld setGravity:CGVectorMake(0, -5)];
+        spriteWalkAnimation = [self spriteWalkAnimation];
+        spriteJumpAnimation = [self spriteJumpAnimation];
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
         [backgroundScenario setPosition:CGPointMake(250, 300)];
         [backgroundScenario setScale:0.5];
@@ -78,6 +82,8 @@ static const uint32_t playerCategory  =  0x1 << 1;
         box1.position = CGPointMake(180,220);
         [box1 setScale:0.1];
         box1.physicsBody.categoryBitMask = boxCategory;
+        box1.physicsBody.collisionBitMask = boxCategory | playerCategory | floorButtonCategory ;
+        box1.physicsBody.contactTestBitMask = boxCategory | playerCategory| floorButtonCategory;
         [world addChild:box1];
         
         
@@ -106,10 +112,14 @@ static const uint32_t playerCategory  =  0x1 << 1;
         CGPoint touchLocation = [touch locationInNode:self];
         if(CGRectContainsPoint(pad.frame, touchLocation) && isGrounded){
             //isGrounded = false;
-            CGPoint jumpPoint =  CGPointMake(player.position.x, player.position.y + 150);
+            CGPoint jumpPoint =  CGPointMake(player.position.x, player.position.y + 50);
             SKAction *jumpAction = [SKAction moveTo:jumpPoint duration:0.2];
+
             [player runAction:jumpAction completion:^{
-                //[self performSelectorInBackground:@selector(setGrounded) withObject:NO];
+                [self performSelectorInBackground:@selector(setGrounded) withObject:NO];
+            }];
+            [player runAction:spriteJumpAnimation completion:^{
+                
             }];
         }
     }
@@ -177,18 +187,51 @@ static const uint32_t playerCategory  =  0x1 << 1;
         }
        
     }
+    if(contact.bodyA.categoryBitMask == floorButtonCategory && contact.bodyB.categoryBitMask == boxCategory){
+        if(!floorButton.isPressed){
+            SKAction *buttonPressed = [SKAction moveToY:floorButton.position.y-10 duration:0.2];
+            [floorButton runAction:buttonPressed];
+            floorButton.isPressed = true;
+            NSLog(@"run action");
+            SKAction *rotateBridge = [SKAction rotateToAngle:(M_PI / 2) duration:1];
+            SKAction *moveBridge = [SKAction moveToX:bridge.position.x - 90 duration:1];
+            SKAction *moveBridgey = [SKAction moveToY:bridge.position.y - 85 duration:1];
+            [bridge runAction:rotateBridge completion:^{
+//                box1.physicsBody.dynamic = YES];
+            }];
+            [bridge runAction:moveBridge];
+            [bridge runAction:moveBridgey];
+
+        }
+  
+    }
+
 }
 
 #pragma scene configs and scenario
 - (void)addFloor{
     //Floor
     
+
+    floorButton = [[FloorButtonSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"FloorButton.png"]];
+    floorButton.physicsBody.categoryBitMask = floorButtonCategory;
+    floorButton.isPressed = false;
+    [world addChild:floorButton];
+    
+    bridge = [SKSpriteNode spriteNodeWithImageNamed:@"bridge.jpg"];
+    [bridge setScale:0.3];
+    bridge.position = CGPointMake(790, 300);
+    bridge.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(bridge.frame.size.width, bridge.frame.size.height)];
+    bridge.physicsBody.dynamic = NO;
+    bridge.physicsBody.affectedByGravity = false;
+    [world addChild:bridge];
+    
+    
     SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
     floor.position = CGPointMake(100, 200);
     floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
     floor.physicsBody.dynamic = NO;
     floor.physicsBody.affectedByGravity = false;
-    
     [world addChild:floor];
     
     SKSpriteNode *floor2 = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
@@ -227,7 +270,7 @@ static const uint32_t playerCategory  =  0x1 << 1;
 
 - (void) movePlayerAnimating{
     isRunning = true;
-    [player runAction:spriteAnimation completion:^{
+    [player runAction:spriteWalkAnimation completion:^{
         [self performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
         isRunning = false;
     }];
@@ -238,11 +281,21 @@ static const uint32_t playerCategory  =  0x1 << 1;
     [player setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
 }
 
-- (SKAction*)spriteAnimation{
+- (SKAction*)spriteWalkAnimation{
     NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
 
     for(int i =1;i<6;i++){
         SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%i.png",i]];
+        [texturesArray addObject:texture];
+    }
+    return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
+}
+
+- (SKAction*)spriteJumpAnimation{
+    NSMutableArray *texturesArray = [[NSMutableArray alloc]init];
+    
+    for(int i =1;i<6;i++){
+        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"jump_0%i.png",i]];
         [texturesArray addObject:texture];
     }
     return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];

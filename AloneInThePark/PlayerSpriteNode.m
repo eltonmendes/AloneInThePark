@@ -17,8 +17,7 @@
     [self setScale:0.4];
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(35, 45)];
     self.physicsBody.dynamic = YES;
-    self.physicsBody.mass = 100;
-    self.physicsBody.usesPreciseCollisionDetection = YES;
+    self.physicsBody.mass = 1000;
     
     return self;
 }
