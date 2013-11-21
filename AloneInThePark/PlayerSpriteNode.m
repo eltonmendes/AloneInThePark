@@ -41,4 +41,9 @@
     return [SKAction animateWithTextures:texturesArray timePerFrame:0.1 resize:NO restore:YES];
 }
 
+
+- (void)removePlayerAnimation{
+    [self removeAllActions];
+    [self setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
+}
 @end

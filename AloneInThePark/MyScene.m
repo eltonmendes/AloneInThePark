@@ -267,15 +267,11 @@ static const uint32_t playerCategory      =  0x1 << 2;
 - (void) movePlayerAnimating{
     isRunning = true;
     [player runAction:player.spriteWalkAnimation completion:^{
-        [self performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
+        [player performSelectorOnMainThread:@selector(removePlayerAnimation) withObject:NO waitUntilDone:NO];
         isRunning = false;
     }];
 }
 
-- (void)removePlayerAnimation{
-    [player removeAllActions];
-    [player setTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
-}
 
 
 
