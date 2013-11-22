@@ -32,6 +32,10 @@
 		EC668DB0183BD5FF002190AE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EC668DAE183BD5FF002190AE /* spark.png */; };
 		EC668DB5183BD724002190AE /* BoxSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EC668DB4183BD724002190AE /* BoxSpriteNode.m */; };
 		EC668DB9183BE9C6002190AE /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EC668DB8183BE9C6002190AE /* PlayerSpriteNode.m */; };
+		EC92BFBE183F71CA0049FD73 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EC92BFBD183F71CA0049FD73 /* MenuScene.m */; };
+		EC92BFC1183F744E0049FD73 /* backgroundMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC0183F744E0049FD73 /* backgroundMenu.jpg */; };
+		EC92BFC5183F75040049FD73 /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC4183F75040049FD73 /* startButton.png */; };
+		EC92BFC8183F7BBE0049FD73 /* CastleSprit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */; };
 		ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */; };
 		ECA45DA4183B846C00EA8320 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA3183B846C00EA8320 /* background.jpg */; };
 		ECA45DA6183B870300EA8320 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA5183B870300EA8320 /* floor.jpg */; };
@@ -99,6 +103,11 @@
 		EC668DB4183BD724002190AE /* BoxSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSpriteNode.m; sourceTree = "<group>"; };
 		EC668DB7183BE9C6002190AE /* PlayerSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSpriteNode.h; sourceTree = "<group>"; };
 		EC668DB8183BE9C6002190AE /* PlayerSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSpriteNode.m; sourceTree = "<group>"; };
+		EC92BFBC183F71CA0049FD73 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		EC92BFBD183F71CA0049FD73 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
+		EC92BFC0183F744E0049FD73 /* backgroundMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundMenu.jpg; sourceTree = "<group>"; };
+		EC92BFC4183F75040049FD73 /* startButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startButton.png; sourceTree = "<group>"; };
+		EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CastleSprit.jpg; sourceTree = "<group>"; };
 		ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundGame.jpg; sourceTree = "<group>"; };
 		ECA45DA3183B846C00EA8320 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		ECA45DA5183B870300EA8320 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -198,10 +207,7 @@
 		EC2F6A021834E9030032C836 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ECEE439E183BC746003C6434 /* box.jpg */,
-				ECA45DA0183B837100EA8320 /* Scenario */,
-				EC92525E183542090033D289 /* PlayerAssets */,
-				EC92525D183541FD0033D289 /* JoystickAssets */,
+				EC92BFC2183F744F0049FD73 /* Images */,
 				EC2F6A031834E9030032C836 /* AloneInThePark-Info.plist */,
 				EC2F6A041834E9030032C836 /* InfoPlist.strings */,
 				EC2F6A071834E9030032C836 /* main.m */,
@@ -268,8 +274,8 @@
 		EC92525A183540DE0033D289 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EC2F6A131834E9030032C836 /* MyScene.h */,
-				EC2F6A141834E9030032C836 /* MyScene.m */,
+				EC92BFBB183F71B40049FD73 /* MenuScene */,
+				EC92BFBA183F71AA0049FD73 /* GameScene */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 		EC92525B1835419A0033D289 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EC92BFC6183F7B170049FD73 /* PadController */,
 				EC92525C183541AE0033D289 /* ViewController */,
 				EC925259183540D20033D289 /* JoystickController */,
 			);
@@ -311,11 +318,66 @@
 			name = PlayerAssets;
 			sourceTree = "<group>";
 		};
+		EC92BFBA183F71AA0049FD73 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F6A131834E9030032C836 /* MyScene.h */,
+				EC2F6A141834E9030032C836 /* MyScene.m */,
+			);
+			name = GameScene;
+			sourceTree = "<group>";
+		};
+		EC92BFBB183F71B40049FD73 /* MenuScene */ = {
+			isa = PBXGroup;
+			children = (
+				EC92BFBC183F71CA0049FD73 /* MenuScene.h */,
+				EC92BFBD183F71CA0049FD73 /* MenuScene.m */,
+			);
+			name = MenuScene;
+			sourceTree = "<group>";
+		};
+		EC92BFBF183F74470049FD73 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				EC92BFC0183F744E0049FD73 /* backgroundMenu.jpg */,
+				EC92BFC4183F75040049FD73 /* startButton.png */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		EC92BFC2183F744F0049FD73 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EC92BFBF183F74470049FD73 /* Menu */,
+				ECA45DA0183B837100EA8320 /* Scenario */,
+				EC92525E183542090033D289 /* PlayerAssets */,
+				EC92525D183541FD0033D289 /* JoystickAssets */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		EC92BFC3183F74750049FD73 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE439E183BC746003C6434 /* box.jpg */,
+				ECD254A7183E72FB00AD8111 /* bridge.jpg */,
+				ECD254A1183E6EB900AD8111 /* FloorButton.png */,
+			);
+			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		EC92BFC6183F7B170049FD73 /* PadController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PadController;
+			sourceTree = "<group>";
+		};
 		ECA45DA0183B837100EA8320 /* Scenario */ = {
 			isa = PBXGroup;
 			children = (
-				ECD254A7183E72FB00AD8111 /* bridge.jpg */,
-				ECD254A1183E6EB900AD8111 /* FloorButton.png */,
+				EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */,
+				EC92BFC3183F74750049FD73 /* GameObjects */,
 				ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */,
 				ECA45DA3183B846C00EA8320 /* background.jpg */,
 				ECA45DA5183B870300EA8320 /* floor.jpg */,
@@ -453,8 +515,11 @@
 				ECD254A8183E72FB00AD8111 /* bridge.jpg in Resources */,
 				ECA45DB0183B8EB500EA8320 /* player2.png in Resources */,
 				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
+				EC92BFC8183F7BBE0049FD73 /* CastleSprit.jpg in Resources */,
 				ECD2549D183E6C8300AD8111 /* jump_01.png in Resources */,
 				ECEE439F183BC746003C6434 /* box.jpg in Resources */,
+				EC92BFC1183F744E0049FD73 /* backgroundMenu.jpg in Resources */,
+				EC92BFC5183F75040049FD73 /* startButton.png in Resources */,
 				ECD254A2183E6EB900AD8111 /* FloorButton.png in Resources */,
 				ECA45DAF183B8EB500EA8320 /* player3.png in Resources */,
 				ECA45DB2183B8EB500EA8320 /* player0.png in Resources */,
@@ -488,6 +553,7 @@
 				EC2F6A0C1834E9030032C836 /* AppDelegate.m in Sources */,
 				EC668DB5183BD724002190AE /* BoxSpriteNode.m in Sources */,
 				ECD254A6183E70AA00AD8111 /* FloorButtonSpriteNode.m in Sources */,
+				EC92BFBE183F71CA0049FD73 /* MenuScene.m in Sources */,
 				EC668DB9183BE9C6002190AE /* PlayerSpriteNode.m in Sources */,
 				EC2F6A081834E9030032C836 /* main.m in Sources */,
 			);

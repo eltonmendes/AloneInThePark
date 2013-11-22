@@ -12,7 +12,7 @@
 
 -(id)initWithTexture:(SKTexture *)texture{
     self = [super initWithTexture:texture];
-    self.position = CGPointMake(550, 200);
+    self.position = CGPointMake(550, 0);
     [self setScale:0.1];
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
     self.physicsBody.dynamic = NO;

@@ -13,11 +13,10 @@
 
 -(id)initWithTexture:(SKTexture *)texture{
     self = [super initWithTexture:texture];
-    self.position = CGPointMake(80,220);
     [self setScale:0.4];
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(35, 45)];
     self.physicsBody.dynamic = YES;
-    self.physicsBody.mass = 1000;
+    self.physicsBody.mass = 100;
     
     return self;
 }

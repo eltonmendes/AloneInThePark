@@ -27,6 +27,7 @@ BOOL isRunning;
 static const uint32_t boxCategory         =  0x1 << 0;
 static const uint32_t floorButtonCategory =  0x1 << 1;
 static const uint32_t playerCategory      =  0x1 << 2;
+static const uint32_t castleCategory      =  0x1 << 3;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -36,20 +37,18 @@ static const uint32_t playerCategory      =  0x1 << 2;
         self.physicsWorld.contactDelegate = self;
         [self.physicsWorld setGravity:CGVectorMake(0, -5)];
         backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
-        [backgroundScenario setPosition:CGPointMake(250, 300)];
-        [backgroundScenario setScale:0.5];
+        [backgroundScenario setPosition:CGPointMake(250, 120)];
+        [backgroundScenario setScale:0.6];
         [self addChild:backgroundScenario];
         
         world = [[SKNode alloc]init];
         [self addChild:world];
 
 
-        
-        
-        
         //Player
         
         player = [[PlayerSpriteNode alloc ]initWithTexture:[SKTexture textureWithImageNamed:@"player0.png"]];
+        player.position = CGPointMake(120,20);
         player.physicsBody.categoryBitMask = playerCategory;
         player.physicsBody.collisionBitMask = playerCategory | boxCategory ;
         player.physicsBody.contactTestBitMask = playerCategory | boxCategory;
@@ -62,26 +61,37 @@ static const uint32_t playerCategory      =  0x1 << 2;
         SKSpriteNode *jsThumb = [SKSpriteNode spriteNodeWithImageNamed:@"joystick.png"];
         SKSpriteNode *jsBackdrop = [SKSpriteNode spriteNodeWithImageNamed:@"dpad.png"];
         joystick = [Joystick joystickWithThumb:jsThumb andBackdrop:jsBackdrop];
-        joystick.position = CGPointMake(30, 220);
+        joystick.position = CGPointMake(40, 40);
         [self addChild:joystick];
         
         //Keypad
         
         pad = [SKSpriteNode spriteNodeWithImageNamed:@"jumpButton.png"];
         [pad setScale:0.1];
-        pad.position = CGPointMake(270, 220);
+        pad.position = CGPointMake(470, 20);
         [self addChild:pad];
         
         //Box
         
         box1 = [[BoxSpriteNode alloc]initWithImageNamed:@"box.jpg"];
-        box1.position = CGPointMake(180,220);
+        box1.position = CGPointMake(180,20);
         [box1 setScale:0.1];
         box1.physicsBody.categoryBitMask = boxCategory;
-        box1.physicsBody.collisionBitMask = boxCategory | playerCategory | floorButtonCategory ;
-        box1.physicsBody.contactTestBitMask = boxCategory | playerCategory| floorButtonCategory;
+        box1.physicsBody.collisionBitMask = boxCategory | playerCategory | floorButtonCategory;
+        box1.physicsBody.contactTestBitMask = boxCategory | playerCategory | floorButtonCategory;
         [world addChild:box1];
         
+        //Castle
+        
+        SKSpriteNode *castle = [SKSpriteNode spriteNodeWithImageNamed:@"CastleSprit.jpg"];
+        castle.position = CGPointMake(-300,150);
+        [castle setScale:0.6];
+        castle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(castle.frame.size.width, castle.frame.size.height)];
+        castle.physicsBody.dynamic = NO;
+        castle.physicsBody.affectedByGravity = false;
+        [world addChild:castle];
+        
+      
         
 
 
@@ -131,25 +141,26 @@ static const uint32_t playerCategory      =  0x1 << 2;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    
     //Ground Position:
-    
+   
+    //Right
     if(joystick.velocity.x > 0){
         player.xScale = -0.5;
         
-        [self worldMoveRight];
-        [self backgroundParallaxMoveRight];
+        [self worldMove];
+        [self backgroundParallaxMove];
        
         if(!isRunning){
             [self movePlayerAnimating];
         }
        
     }
-    else if (joystick.velocity.x < 0){
+    //Left - Screen Limit
+    else if (joystick.velocity.x < 0 && world.position.x <=320){
         player.xScale = 0.5;
       
-        [self worldMoveRight];
-        [self backgroundParallaxMoveLeft];
+        [self worldMove];
+        [self backgroundParallaxMove];
         
         if(!isRunning){
             [self movePlayerAnimating];
@@ -162,6 +173,7 @@ static const uint32_t playerCategory      =  0x1 << 2;
 
 
 #pragma physycs delegate
+
 
 -(void)didBeginContact:(SKPhysicsContact *)contact{
     if(contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == boxCategory){
@@ -201,6 +213,8 @@ static const uint32_t playerCategory      =  0x1 << 2;
         }
   
     }
+   
+
 
 }
 
@@ -216,7 +230,7 @@ static const uint32_t playerCategory      =  0x1 << 2;
     
     bridge = [SKSpriteNode spriteNodeWithImageNamed:@"bridge.jpg"];
     [bridge setScale:0.3];
-    bridge.position = CGPointMake(790, 300);
+    bridge.position = CGPointMake(790, 100);
     bridge.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(bridge.frame.size.width, bridge.frame.size.height)];
     bridge.physicsBody.dynamic = NO;
     bridge.physicsBody.affectedByGravity = false;
@@ -224,14 +238,14 @@ static const uint32_t playerCategory      =  0x1 << 2;
     
     
     SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
-    floor.position = CGPointMake(100, 200);
+    floor.position = CGPointMake(100, 0);
     floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
     floor.physicsBody.dynamic = NO;
     floor.physicsBody.affectedByGravity = false;
     [world addChild:floor];
     
     SKSpriteNode *floor2 = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
-    floor2.position = CGPointMake(1300, 200);
+    floor2.position = CGPointMake(1300, 0);
     floor2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
     floor2.physicsBody.dynamic = NO;
     floor2.physicsBody.affectedByGravity = false;
@@ -241,28 +255,21 @@ static const uint32_t playerCategory      =  0x1 << 2;
 
 #pragma worldMovement;
 
-- (void)worldMoveRight{
-    SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
-    [world runAction:sceneFollow];
-}
 
-- (void)worldMoveLeft{
+
+- (void)worldMove{
     SKAction *sceneFollow = [SKAction moveTo:CGPointMake(world.position.x - (joystick.velocity.x * 2), world.position.y) duration:0.1];
     [world runAction:sceneFollow];
 }
 
 #pragma backgroundParallax;
 
-- (void)backgroundParallaxMoveRight{
-    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.1), backgroundScenario.position.y) duration:0.1];
+- (void)backgroundParallaxMove{
+    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.05), backgroundScenario.position.y) duration:0.1];
     
     [backgroundScenario runAction:backgroundParallax];
 }
-- (void)backgroundParallaxMoveLeft{
-    SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(backgroundScenario.position.x - (joystick.velocity.x * 0.1), backgroundScenario.position.y) duration:0.1];
-    
-    [backgroundScenario runAction:backgroundParallax];
-}
+
 
 - (void) movePlayerAnimating{
     isRunning = true;
