@@ -36,6 +36,8 @@
 		EC92BFC1183F744E0049FD73 /* backgroundMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC0183F744E0049FD73 /* backgroundMenu.jpg */; };
 		EC92BFC5183F75040049FD73 /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC4183F75040049FD73 /* startButton.png */; };
 		EC92BFC8183F7BBE0049FD73 /* CastleSprit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */; };
+		EC92BFCC183F87450049FD73 /* GameOverController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC92BFCB183F87450049FD73 /* GameOverController.m */; };
+		EC92BFCE183F87670049FD73 /* gameOver.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFCD183F87670049FD73 /* gameOver.jpg */; };
 		ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */; };
 		ECA45DA4183B846C00EA8320 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA3183B846C00EA8320 /* background.jpg */; };
 		ECA45DA6183B870300EA8320 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA5183B870300EA8320 /* floor.jpg */; };
@@ -108,6 +110,9 @@
 		EC92BFC0183F744E0049FD73 /* backgroundMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundMenu.jpg; sourceTree = "<group>"; };
 		EC92BFC4183F75040049FD73 /* startButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startButton.png; sourceTree = "<group>"; };
 		EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CastleSprit.jpg; sourceTree = "<group>"; };
+		EC92BFCA183F87450049FD73 /* GameOverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverController.h; sourceTree = "<group>"; };
+		EC92BFCB183F87450049FD73 /* GameOverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverController.m; sourceTree = "<group>"; };
+		EC92BFCD183F87670049FD73 /* gameOver.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameOver.jpg; sourceTree = "<group>"; };
 		ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundGame.jpg; sourceTree = "<group>"; };
 		ECA45DA3183B846C00EA8320 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		ECA45DA5183B870300EA8320 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -283,6 +288,7 @@
 		EC92525B1835419A0033D289 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EC92BFC9183F87340049FD73 /* GameOver */,
 				EC92BFC6183F7B170049FD73 /* PadController */,
 				EC92525C183541AE0033D289 /* ViewController */,
 				EC925259183540D20033D289 /* JoystickController */,
@@ -339,6 +345,7 @@
 		EC92BFBF183F74470049FD73 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				EC92BFCD183F87670049FD73 /* gameOver.jpg */,
 				EC92BFC0183F744E0049FD73 /* backgroundMenu.jpg */,
 				EC92BFC4183F75040049FD73 /* startButton.png */,
 			);
@@ -371,6 +378,15 @@
 			children = (
 			);
 			name = PadController;
+			sourceTree = "<group>";
+		};
+		EC92BFC9183F87340049FD73 /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				EC92BFCA183F87450049FD73 /* GameOverController.h */,
+				EC92BFCB183F87450049FD73 /* GameOverController.m */,
+			);
+			name = GameOver;
 			sourceTree = "<group>";
 		};
 		ECA45DA0183B837100EA8320 /* Scenario */ = {
@@ -515,6 +531,7 @@
 				ECD254A8183E72FB00AD8111 /* bridge.jpg in Resources */,
 				ECA45DB0183B8EB500EA8320 /* player2.png in Resources */,
 				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
+				EC92BFCE183F87670049FD73 /* gameOver.jpg in Resources */,
 				EC92BFC8183F7BBE0049FD73 /* CastleSprit.jpg in Resources */,
 				ECD2549D183E6C8300AD8111 /* jump_01.png in Resources */,
 				ECEE439F183BC746003C6434 /* box.jpg in Resources */,
@@ -556,6 +573,7 @@
 				EC92BFBE183F71CA0049FD73 /* MenuScene.m in Sources */,
 				EC668DB9183BE9C6002190AE /* PlayerSpriteNode.m in Sources */,
 				EC2F6A081834E9030032C836 /* main.m in Sources */,
+				EC92BFCC183F87450049FD73 /* GameOverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

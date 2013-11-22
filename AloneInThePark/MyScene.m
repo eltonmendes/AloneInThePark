@@ -11,6 +11,8 @@
 #import "BoxSpriteNode.h"
 #import "PlayerSpriteNode.h"
 #import "FloorButtonSpriteNode.h"
+#import "GameOverController.h"
+
 @implementation MyScene
 
 Joystick *joystick;
@@ -24,6 +26,8 @@ SKNode *world;
 BOOL isJumping;
 BOOL isGrounded;
 BOOL isRunning;
+BOOL isGameOver;
+
 static const uint32_t boxCategory         =  0x1 << 0;
 static const uint32_t floorButtonCategory =  0x1 << 1;
 static const uint32_t playerCategory      =  0x1 << 2;
@@ -68,7 +72,7 @@ static const uint32_t castleCategory      =  0x1 << 3;
         
         pad = [SKSpriteNode spriteNodeWithImageNamed:@"jumpButton.png"];
         [pad setScale:0.1];
-        pad.position = CGPointMake(470, 20);
+        pad.position = CGPointMake(470, 40);
         [self addChild:pad];
         
         //Box
@@ -139,10 +143,28 @@ static const uint32_t castleCategory      =  0x1 << 3;
 
 }
 
--(void)update:(CFTimeInterval)currentTime {
+- (void)showGameOver{
+    GameOverController *gameOverController = [[GameOverController alloc]initWithTexture:[SKTexture textureWithImageNamed:@"gameOver.jpg"]];
+   
+    [gameOverController setPosition:CGPointMake(280, 160)];
+    [self addChild:gameOverController];
+
+}
+
+- (void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     //Ground Position:
    
+    
+    if(player.position.y <=0){
+        if(!isGameOver){
+            [self showGameOver];
+            isGameOver = true;
+        }
+
+    }
+    
+    
     //Right
     if(joystick.velocity.x > 0){
         player.xScale = -0.5;
