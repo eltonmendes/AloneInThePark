@@ -15,4 +15,8 @@ Version Info:
 - Sprites Collision 
 - Particle Apply
 - Floor Button + Bridge System
+- Screen left Limit
 
+//////
+
+- Menu Scene with Transition
