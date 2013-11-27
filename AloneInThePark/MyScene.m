@@ -42,13 +42,34 @@ static const uint32_t castleCategory      =  0x1 << 3;
         self.grounded = true;
         self.physicsWorld.contactDelegate = self;
         [self.physicsWorld setGravity:CGVectorMake(0, -5)];
-        self.backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
-        [self.backgroundScenario setPosition:CGPointMake(250, 120)];
+        
+        //Fix Background
+        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"bg.png"];
+        [background setScale:0.6];
+        [background setPosition:CGPointMake(300, 160)];
+        [self addChild:background];
+        //Fix Background
+        SKSpriteNode *backgroundFog = [SKSpriteNode spriteNodeWithImageNamed:@"bg2.png"];
+        [backgroundFog setScale:0.6];
+        [backgroundFog setPosition:CGPointMake(300, 160)];
+        //[self addChild:backgroundFog];
+        
+        //Scenario
+        self.backgroundScenario = [SKSpriteNode spriteNodeWithImageNamed:@"stones.png"];
+        [self.backgroundScenario setPosition:CGPointMake(300, 200)];
         [self.backgroundScenario setScale:0.6];
         [self addChild:self.backgroundScenario];
         
         self.world = [SKNode new];
         [self addChild:self.world];
+      
+        
+        
+        //Add Scenario
+        [self addScenario];
+        //Add Floor
+        [self addFloor];
+
 
 
         //Player
@@ -60,7 +81,6 @@ static const uint32_t castleCategory      =  0x1 << 3;
         self.player.physicsBody.contactTestBitMask = playerCategory | boxCategory;
         [self addChild:self.player];
         
-        [self addFloor];
         
         //Joystick
         
@@ -235,6 +255,19 @@ static const uint32_t castleCategory      =  0x1 << 3;
 }
 
 #pragma scene configs and scenario
+
+- (void)addScenario{
+    int x = 100;
+    for(int i =0;i<4;i++){
+        SKSpriteNode *scenario = [SKSpriteNode spriteNodeWithImageNamed:@"scenario.png"];
+        [scenario setPosition:CGPointMake(x, 200)];
+        [scenario setScale:0.6];
+        [self.world addChild:scenario];
+        
+        x+= 620;
+    }
+}
+
 - (void)addFloor{
     //Floor
     
@@ -267,6 +300,15 @@ static const uint32_t castleCategory      =  0x1 << 3;
     floor2.physicsBody.affectedByGravity = false;
     
     [self.world addChild:floor2];
+    
+    
+    SKSpriteNode *floor3 = [SKSpriteNode spriteNodeWithImageNamed:@"floor.jpg"];
+    floor3.position = CGPointMake(2300, 0);
+    floor3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 40)];
+    floor3.physicsBody.dynamic = NO;
+    floor3.physicsBody.affectedByGravity = false;
+    
+    [self.world addChild:floor3];
 }
 
 #pragma worldMovement;
@@ -282,7 +324,8 @@ static const uint32_t castleCategory      =  0x1 << 3;
     SKAction *backgroundParallax = [SKAction moveTo:CGPointMake(self.backgroundScenario.position.x - (self.joystick.velocity.x * 0.05), self.backgroundScenario.position.y) duration:0.1];
     
     [self.backgroundScenario runAction:backgroundParallax];
-}
+    
+  }
 
 
 - (void) movePlayerAnimating{
