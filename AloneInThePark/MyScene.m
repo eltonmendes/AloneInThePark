@@ -43,12 +43,10 @@ static const uint32_t castleCategory      =  0x1 << 3;
         self.physicsWorld.contactDelegate = self;
         [self.physicsWorld setGravity:CGVectorMake(0, -5)];
         
-        //Fix Background
-        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"bg.png"];
-        [background setScale:0.6];
-        [background setPosition:CGPointMake(300, 160)];
-        [self addChild:background];
-        //Fix Background
+        //Color Background
+        [self setBackgroundColor:[UIColor darkGrayColor]];
+        
+        //Fog Background
         SKSpriteNode *backgroundFog = [SKSpriteNode spriteNodeWithImageNamed:@"bg2.png"];
         [backgroundFog setScale:0.6];
         [backgroundFog setPosition:CGPointMake(300, 160)];
