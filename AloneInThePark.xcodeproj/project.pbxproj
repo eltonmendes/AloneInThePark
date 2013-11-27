@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC1201671846139E00BECD79 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1201641846139E00BECD79 /* bg.png */; };
+		EC12016B18463C2000BECD79 /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC12016A18463C2000BECD79 /* bg2.png */; };
+		EC12016D18463C7F00BECD79 /* stones.png in Resources */ = {isa = PBXBuildFile; fileRef = EC12016C18463C7F00BECD79 /* stones.png */; };
+		EC12016F18463D3500BECD79 /* scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = EC12016E18463D3500BECD79 /* scenario.png */; };
 		EC2F69FA1834E9030032C836 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69F91834E9030032C836 /* Foundation.framework */; };
 		EC2F69FC1834E9030032C836 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69FB1834E9030032C836 /* CoreGraphics.framework */; };
 		EC2F69FE1834E9030032C836 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2F69FD1834E9030032C836 /* UIKit.framework */; };
@@ -38,7 +42,6 @@
 		EC92BFC8183F7BBE0049FD73 /* CastleSprit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */; };
 		EC92BFCC183F87450049FD73 /* GameOverController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC92BFCB183F87450049FD73 /* GameOverController.m */; };
 		EC92BFCE183F87670049FD73 /* gameOver.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC92BFCD183F87670049FD73 /* gameOver.jpg */; };
-		ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */; };
 		ECA45DA4183B846C00EA8320 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA3183B846C00EA8320 /* background.jpg */; };
 		ECA45DA6183B870300EA8320 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA5183B870300EA8320 /* floor.jpg */; };
 		ECA45DAD183B8EB500EA8320 /* player5.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA45DA7183B8EB500EA8320 /* player5.png */; };
@@ -71,6 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC1201641846139E00BECD79 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		EC12016A18463C2000BECD79 /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg2.png; sourceTree = "<group>"; };
+		EC12016C18463C7F00BECD79 /* stones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stones.png; sourceTree = "<group>"; };
+		EC12016E18463D3500BECD79 /* scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scenario.png; sourceTree = "<group>"; };
 		EC2F69F61834E9030032C836 /* AloneInThePark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AloneInThePark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2F69F91834E9030032C836 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EC2F69FB1834E9030032C836 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,7 +120,6 @@
 		EC92BFCA183F87450049FD73 /* GameOverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverController.h; sourceTree = "<group>"; };
 		EC92BFCB183F87450049FD73 /* GameOverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverController.m; sourceTree = "<group>"; };
 		EC92BFCD183F87670049FD73 /* gameOver.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameOver.jpg; sourceTree = "<group>"; };
-		ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundGame.jpg; sourceTree = "<group>"; };
 		ECA45DA3183B846C00EA8320 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		ECA45DA5183B870300EA8320 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
 		ECA45DA7183B8EB500EA8320 /* player5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player5.png; sourceTree = "<group>"; };
@@ -161,6 +167,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC1201611846138F00BECD79 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				EC12016E18463D3500BECD79 /* scenario.png */,
+				ECA45DA3183B846C00EA8320 /* background.jpg */,
+				EC1201641846139E00BECD79 /* bg.png */,
+				EC12016A18463C2000BECD79 /* bg2.png */,
+				EC12016C18463C7F00BECD79 /* stones.png */,
+			);
+			name = Background;
+			sourceTree = "<group>";
+		};
 		EC2F69ED1834E9030032C836 = {
 			isa = PBXGroup;
 			children = (
@@ -392,10 +410,9 @@
 		ECA45DA0183B837100EA8320 /* Scenario */ = {
 			isa = PBXGroup;
 			children = (
+				EC1201611846138F00BECD79 /* Background */,
 				EC92BFC7183F7BBE0049FD73 /* CastleSprit.jpg */,
 				EC92BFC3183F74750049FD73 /* GameObjects */,
-				ECA45DA1183B837900EA8320 /* BackgroundGame.jpg */,
-				ECA45DA3183B846C00EA8320 /* background.jpg */,
 				ECA45DA5183B870300EA8320 /* floor.jpg */,
 			);
 			name = Scenario;
@@ -517,6 +534,7 @@
 				ECA45DA4183B846C00EA8320 /* background.jpg in Resources */,
 				ECD254A0183E6C8300AD8111 /* jump_06.png in Resources */,
 				ECD2549B183E6C8300AD8111 /* jump_03.png in Resources */,
+				EC1201671846139E00BECD79 /* bg.png in Resources */,
 				EC2F6A061834E9030032C836 /* InfoPlist.strings in Resources */,
 				EC2F6A48183539210032C836 /* jumpButton.png in Resources */,
 				ECA45DB1183B8EB500EA8320 /* player1.png in Resources */,
@@ -527,9 +545,10 @@
 				ECD2549F183E6C8300AD8111 /* jump_07.png in Resources */,
 				ECA45DA6183B870300EA8320 /* floor.jpg in Resources */,
 				EC2F6A381834EAF20032C836 /* player.png in Resources */,
-				ECA45DA2183B837900EA8320 /* BackgroundGame.jpg in Resources */,
 				ECD254A8183E72FB00AD8111 /* bridge.jpg in Resources */,
+				EC12016F18463D3500BECD79 /* scenario.png in Resources */,
 				ECA45DB0183B8EB500EA8320 /* player2.png in Resources */,
+				EC12016D18463C7F00BECD79 /* stones.png in Resources */,
 				EC2F6A451835355B0032C836 /* dpad.png in Resources */,
 				EC92BFCE183F87670049FD73 /* gameOver.jpg in Resources */,
 				EC92BFC8183F7BBE0049FD73 /* CastleSprit.jpg in Resources */,
@@ -544,6 +563,7 @@
 				EC2F6A0F1834E9030032C836 /* Main.storyboard in Resources */,
 				ECD2549A183E6C8300AD8111 /* jump_04.png in Resources */,
 				ECA45DAD183B8EB500EA8320 /* player5.png in Resources */,
+				EC12016B18463C2000BECD79 /* bg2.png in Resources */,
 				ECD2549E183E6C8300AD8111 /* jump_05.png in Resources */,
 				EC2F6A461835355B0032C836 /* joystick.png in Resources */,
 			);
